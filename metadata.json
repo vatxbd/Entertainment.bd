@@ -1,0 +1,6 @@
+{
+  "name": "Tayyib Vista — হালাল বিনোদন ডিরেক্টরি ও কিউরেশন প্ল্যাটফর্ম",
+  "description": "এক জায়গায় যাচাইকৃত, রেটিংসহ হালাল বিনোদনের সবচেয়ে বড় বৈশ্বিক ডিরেক্টরি, কন্টেন্ট মডারেশন ও পারিবারিক কিউরেশন প্ল্যাটফর্ম।",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
