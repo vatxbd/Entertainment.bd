@@ -64,6 +64,7 @@ import { AdminModerationView } from './components/AdminModerationView';
 import { UserDashboardView } from './components/UserDashboardView';
 import { PrayerQiblaView } from './components/PrayerQiblaView';
 import { StandardsAndInfoView } from './components/StandardsAndInfoView';
+import { ChatWidget } from './components/ChatWidget';
 
 type ActiveRoute =
   | 'home'
@@ -1462,6 +1463,7 @@ export default function App() {
         </button>
       </nav>
       </div>
+      <ChatWidget />
     </APIProvider>
   );
 }
