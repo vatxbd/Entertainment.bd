@@ -3,6 +3,8 @@ import react from '@vitejs/plugin-react';
 import fs from 'fs';
 import path from 'path';
 import {defineConfig} from 'vite';
+// @ts-ignore -- plain JS helper, no type declarations
+import {generatePwaIcons} from './scripts/pwa-icons.mjs';
 
 export default defineConfig(() => {
   return {
@@ -24,6 +26,24 @@ export default defineConfig(() => {
           const distAssets = path.resolve(distDir, 'src/assets');
           if (fs.existsSync(distDir) && fs.existsSync(srcAssets)) {
             fs.cpSync(srcAssets, distAssets, {recursive: true, force: true});
+          }
+        },
+      },
+      // Renders the PWA PNG icons (icon-192/512, maskable) into dist/.
+      // They are generated at build time because the publishing connector
+      // for this repo accepts UTF-8 text only; see scripts/pwa-icons.mjs.
+      // Icons placed under public/ take precedence (existing dist files
+      // are left untouched).
+      {
+        name: 'generate-pwa-icons',
+        apply: 'build',
+        closeBundle(error?: Error): void {
+          if (error) {
+            return;
+          }
+          const distDir = path.resolve(__dirname, 'dist');
+          if (fs.existsSync(distDir)) {
+            generatePwaIcons(distDir);
           }
         },
       },
